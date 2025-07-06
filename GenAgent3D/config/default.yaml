@@ -1,0 +1,66 @@
+# Agent Configuration
+agents:
+  planner:
+    model: "gpt-4"
+    temperature: 0.7
+    max_tokens: 2000
+  
+  executor:
+    renderer: "blender"
+    default_resolution: [1920, 1080]
+    render_engine: "cycles"
+    samples: 128
+  
+  verifier:
+    model: "gpt-4-vision-preview"
+    similarity_threshold: 0.7
+    clip_model: "ViT-B/32"
+
+# Scene Configuration
+scene:
+  default_lighting:
+    type: "sun"
+    energy: 5.0
+    color: [1.0, 0.95, 0.8]
+  
+  default_camera:
+    position: [5.0, -5.0, 3.0]
+    target: [0.0, 0.0, 0.0]
+    fov: 60.0
+  
+  default_materials:
+    base_color: [0.8, 0.8, 0.8, 1.0]
+    metallic: 0.0
+    roughness: 0.5
+
+# Memory Configuration
+memory:
+  max_history: 1000
+  embedding_model: "text-embedding-ada-002"
+  similarity_threshold: 0.8
+
+# Tool Configuration
+tools:
+  blender:
+    python_path: "C:/Program Files/Blender Foundation/Blender 3.6/3.6/python/bin/python.exe"
+    addon_path: "addons"
+  
+  unity:
+    project_path: ""
+    build_path: ""
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  file: "logs/genagent3d.log"
+  max_size: 10485760  # 10MB
+  backup_count: 5
+
+# API Configuration
+api:
+  openai:
+    api_key: ""  # Set via environment variable
+    organization: ""  # Optional
+  
+  anthropic:
+    api_key: ""  # Set via environment variable 

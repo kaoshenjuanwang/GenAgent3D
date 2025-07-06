@@ -1,0 +1,85 @@
+# Agent configurations
+agents:
+  planner:
+    model: "qwen-max"  # 使用Qwen-Max进行规划，因为需要更强的规划能力
+    temperature: 0.7
+    max_tokens: 2000
+    top_p: 0.9
+  
+  executor:
+    model: "qwen-plus"  # 使用Qwen-Plus进行执行，平衡性能和速度
+    temperature: 0.5
+    max_tokens: 1000
+    top_p: 0.8
+  
+  verifier:
+    model: "qwen-vl-max"  # 使用Qwen-VL-Max进行验证，需要最强的视觉理解能力
+    clip_model: "ViT-B/32"
+    similarity_threshold: 0.7
+
+# Scene generation settings
+scene:
+  default_room_size: [5.0, 5.0, 3.0]  # [width, length, height] in meters
+  default_lighting:
+    type: "area"
+    intensity: 1000
+    color: [1.0, 0.95, 0.8]  # Warm white
+  default_camera:
+    fov: 60
+    distance: 7.0
+    height: 1.6  # Average eye height
+  
+  # Object placement constraints
+  placement:
+    min_distance: 0.5  # Minimum distance between objects
+    wall_clearance: 0.3  # Minimum distance from walls
+    height_limits:
+      table: [0.7, 0.8]
+      chair: [0.4, 0.5]
+      shelf: [1.8, 2.2]
+  
+  # Material presets
+  materials:
+    modern:
+      colors:
+        primary: [0.2, 0.2, 0.2]  # Dark gray
+        secondary: [0.9, 0.9, 0.9]  # White
+        accent: [0.0, 0.5, 0.8]  # Blue
+      roughness: 0.3
+      metallic: 0.8
+    
+    scandinavian:
+      colors:
+        primary: [0.95, 0.95, 0.95]  # Off-white
+        secondary: [0.8, 0.8, 0.8]  # Light gray
+        accent: [0.9, 0.7, 0.5]  # Warm wood
+      roughness: 0.5
+      metallic: 0.2
+    
+    industrial:
+      colors:
+        primary: [0.3, 0.3, 0.3]  # Dark gray
+        secondary: [0.6, 0.6, 0.6]  # Medium gray
+        accent: [0.8, 0.4, 0.2]  # Rust
+      roughness: 0.8
+      metallic: 0.9
+
+# Memory system settings
+memory:
+  max_history: 1000
+  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
+  similarity_threshold: 0.8
+
+# API settings
+api:
+  base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  api_key: "sk-e4beeb344fee48cd98a6d2b600fe15fa"
+
+# Render settings
+render:
+  engine: "cycles"
+  samples: 128
+  resolution: [1920, 1080]
+  output_format: "PNG"
+  output_path: "output"
+  blender_path: "C:\\Users\\86199\\Desktop\\SceneCraft\\blender-4.4.0-windows-x64\\blender-4.4.0-windows-x64\\blender.exe" 
